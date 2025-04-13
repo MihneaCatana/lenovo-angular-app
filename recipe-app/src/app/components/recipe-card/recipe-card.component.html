@@ -1,1 +1,6 @@
-<div>{{ recipe.name }}</div>
+<div class="card-container">
+  <img [src]="recipe.image" alt="Recipe image" />
+  <h3>{{ recipe.name }}</h3>
+  <div><b>Preparation Time: </b> {{ recipe.prepTimeMinutes }} minutes</div>
+  <button (click)="goToRecipePage()">Tell me more</button>
+</div>

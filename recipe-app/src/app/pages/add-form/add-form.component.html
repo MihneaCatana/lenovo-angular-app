@@ -1,0 +1,49 @@
+<h1>Add Recipes</h1>
+<div class="container-form">
+  <form
+    [formGroup]="addRecipeGroup"
+    class="form-add-recipes"
+    (ngSubmit)="onSubmit()"
+  >
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    <p
+      [ngStyle]="{
+        color: isFormInvalid ? 'red' : 'black',
+        display: isFormInvalid ? 'block' : 'none'
+      }"
+    >
+      Invalid value
+    </p>
+    <label for="prepTimeMinutes">Preparation Time (Minutes):</label>
+    <input
+      type="number"
+      id="prepTimeMinutes"
+      formControlName="prepTimeMinutes"
+    />
+    <p
+      [ngStyle]="{
+        color: isFormInvalid ? 'red' : 'black',
+        display: isFormInvalid ? 'block' : 'none'
+      }"
+    >
+      Invalid value
+    </p>
+    <label for="rating">Rating:</label>
+    <input type="number" id="rating" formControlName="rating" />
+    <p
+      [ngStyle]="{
+        color: isFormInvalid ? 'red' : 'black',
+        display: isFormInvalid ? 'block' : 'none'
+      }"
+    >
+      Invalid value
+    </p>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<div>
+  <label for="singular-input">Singular Input</label>
+  <input id="singular-input" type="text" [(ngModel)]="input" />
+  {{ input }}
+</div>

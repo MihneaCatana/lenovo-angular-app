@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Recipe } from '../../interfaces/recipe.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-card',
@@ -9,4 +10,11 @@ import { Recipe } from '../../interfaces/recipe.interface';
 })
 export class RecipeCardComponent {
   @Input() recipe!: Recipe;
+  // private readonly router = inject(Router);
+
+  constructor(private router: Router) {}
+
+  goToRecipePage() {
+    this.router.navigateByUrl(`recipes/${this.recipe.id}`);
+  }
 }

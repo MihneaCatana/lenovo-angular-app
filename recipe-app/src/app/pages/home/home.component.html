@@ -2,4 +2,20 @@
 
 <h2>Recipes</h2>
 
-<app-recipe-card [recipe]="recipes[0]"></app-recipe-card>
+<!-- <app-recipe-card [recipe]="recipes[0]"></app-recipe-card> -->
+
+<div class="container-card">
+  @if(!errorMessage){ @for (recipe of dummyRecipes; track $index) {
+  <app-recipe-card [recipe]="recipe"></app-recipe-card>
+  } @empty {
+  <div>No items to display</div>
+  } } @else {
+  <div>We encountered an error, please check later!</div>
+  }
+</div>
+
+<!-- <div class="container-card">
+  <div *ngFor="let item of recipes">
+    <app-recipe-card [recipe]="item"></app-recipe-card>
+  </div>
+</div> -->
