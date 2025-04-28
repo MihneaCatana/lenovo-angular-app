@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { RecipesService } from '../services/recipes.service';
+import { Recipe } from '../interfaces/recipe.interface';
 
 @Component({
   selector: 'app-add-recipe',
@@ -16,16 +18,23 @@ import {
 export class AddRecipeComponent {
   binding: any;
 
+  constructor(readonly recipesService: RecipesService) {}
+
   addRecipeForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    preparationTime: new FormControl(0, [
+    prepTimeMinutes: new FormControl(0, [
       Validators.required,
       Validators.min(0),
     ]),
+    image: new FormControl('', Validators.required),
+    difficulty: new FormControl('', Validators.required),
   });
 
   onSubmit() {
-    if (this.addRecipeForm.valid) console.log(this.addRecipeForm.value);
-    else console.error('FORM IS NOT VALID');
+    if (this.addRecipeForm.valid) {
+      const formValue = this.addRecipeForm.value;
+
+      this.recipesService.addDbRecipe(formValue as Omit<Recipe, 'id'>);
+    } else console.error('FORM IS NOT VALID');
   }
 }

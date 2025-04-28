@@ -1,7 +1,8 @@
 export interface Recipe {
-	id: string;
-	name: string;
-	image: string;
-	tags: string[];
-	prepTimeMinutes: number;
+  id: string;
+  name: string;
+  image: string;
+  tags?: string[];
+  prepTimeMinutes: number;
+  difficulty?: string;
 }

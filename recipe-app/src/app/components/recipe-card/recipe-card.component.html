@@ -1,6 +1,18 @@
-<div class="card-container">
+<div
+  class="card-container"
+  [ngStyle]="{
+    backgroundColor:
+      recipe.difficulty === 'Easy'
+        ? 'green'
+        : recipe.difficulty === 'Medium'
+        ? 'beige'
+        : 'red'
+  }"
+  [ngClass]="{ 'rounded-card': recipe.prepTimeMinutes === 15 }"
+>
   <div>{{ recipe.name | uppercase }}</div>
   <img [src]="recipe.image" alt="recipe-image" />
   <div><b>Preparation Time: </b> {{ recipe.prepTimeMinutes }}</div>
+  <div><b>Difficulty: </b> {{ recipe.difficulty }}</div>
   <button (click)="goToRecipePage()">Tell me more</button>
 </div>
